@@ -5,12 +5,18 @@ TrelloApp.Routers.Router = Backbone.Router.extend({
   },
 
   routes:{
-    '': 'index'
+    '': 'index',
+    'boards/new': 'createBoard'
   },
 
   index: function () {
     this.boards.fetch();
     var view = new TrelloApp.Views.BoardIndex({collection: this.boards});
+    this.swapView(view);
+  },
+
+  createBoard: function () {
+    var view = new TrelloApp.Views.BoardNew();
     this.swapView(view);
   },
 
