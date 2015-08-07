@@ -11,9 +11,12 @@ TrelloApp.Routers.Router = Backbone.Router.extend({
   index: function () {
     this.boards.fetch();
     var view = new TrelloApp.Views.BoardIndex({collection: this.boards})
-    this._swapView(view);
+    this.swapView(view);
   },
-  
 
-
+  swapView: function (view) {
+    this.view && this.view.remove();
+    this.view = view;
+    this.$rootEl.html(view.render().$el);
+  }
 });

@@ -1,1 +1,1 @@
-json.array! @boards, partial: 'boards'
+json.array! @boards, partial: 'boards', as: :boards

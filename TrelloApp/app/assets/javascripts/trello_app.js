@@ -4,7 +4,13 @@ window.TrelloApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-    var router = new TrelloApp.Routers.Router();
+    var $rootEl = $('#content');
+    var boards = new TrelloApp.Collections.Boards();
+    boards.fetch();
+    var router = new TrelloApp.Routers.Router({
+      collection: boards,
+      $rootEl: $rootEl
+    });
     Backbone.history.start();
   }
 };
