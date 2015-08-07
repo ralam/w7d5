@@ -2,7 +2,7 @@ TrelloApp.Views.BoardIndex = Backbone.View.extend({
   template: JST["boards/index"],
 
   initialize: function () {
-    this.listenTo(this.collection, "sync", this.render)
+    this.listenTo(this.collection, "sync add", this.render)
   },
 
   tagName: "ul",

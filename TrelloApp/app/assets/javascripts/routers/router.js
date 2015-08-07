@@ -1,7 +1,7 @@
 TrelloApp.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.boards = options.collection;
-    this.$rootEl = options.$rootEl
+    this.$rootEl = options.$rootEl;
   },
 
   routes:{
@@ -16,7 +16,7 @@ TrelloApp.Routers.Router = Backbone.Router.extend({
   },
 
   createBoard: function () {
-    var view = new TrelloApp.Views.BoardNew();
+    var view = new TrelloApp.Views.BoardNew({collection: this.boards});
     this.swapView(view);
   },
 
