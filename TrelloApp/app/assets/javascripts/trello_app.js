@@ -4,7 +4,6 @@ window.TrelloApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
     var router = new TrelloApp.Routers.Router();
     Backbone.history.start();
   }

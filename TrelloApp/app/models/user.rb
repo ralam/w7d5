@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  validates :email, :password_digest, :session_token, presence: true
+  validates :email, :password_digest, presence: true
 
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
