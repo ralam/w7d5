@@ -8,6 +8,7 @@ TrelloApp.Views.BoardListItem = Backbone.View.extend({
   tagName: 'li',
 
   render: function () {
+    debugger;
     this.$el.html(this.template({board: this.model}));
     return this;
   }
