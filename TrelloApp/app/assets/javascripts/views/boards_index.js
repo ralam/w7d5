@@ -1,18 +1,24 @@
-TrelloApp.Views.BoardIndex = Backbone.View.extend({
+TrelloApp.Views.BoardIndex = Backbone.CompositeView.extend({
   template: JST["boards/index"],
 
   initialize: function () {
-    this.listenTo(this.collection, "sync add", this.render)
+    this.collection.each(this.addBoard.bind(this));
+    this.listenTo(this.collection, "add", this.addBoard);
   },
 
   tagName: "ul",
+  className: ".board-list",
+
+  addBoard: function (board) {
+    var boardView = new TrelloApp.Views.BoardListItem({
+      model: board
+    });
+    this.addSubview("ul.board-list", boardView);
+  },
 
   render: function () {
     this.$el.html(this.template);
-    this.collection.each(function(board) {
-      var boardItem = new TrelloApp.Views.BoardListItem({model: board});
-      this.$el.append(boardItem.render().$el);
-    }.bind(this));
+    this.attachSubviews();
     return this;
   }
 });
