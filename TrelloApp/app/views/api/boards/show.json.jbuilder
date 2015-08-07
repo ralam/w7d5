@@ -1,1 +1,1 @@
-json.array! @board, partial: 'api/boards/boards', as: :board
+json.partial!('api/boards/boards', board: @board)

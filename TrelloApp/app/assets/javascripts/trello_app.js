@@ -4,9 +4,8 @@ window.TrelloApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-    var $rootEl = $('#content');
+    var $rootEl = $('.content');
     var boards = new TrelloApp.Collections.Boards();
-    boards.fetch();
     var router = new TrelloApp.Routers.Router({
       collection: boards,
       $rootEl: $rootEl

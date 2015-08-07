@@ -3,7 +3,7 @@ class Api::BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
-      render json: 'show'
+      render :show
     else
       render json: @board.errors.full_messages, status: 422
     end
@@ -14,6 +14,7 @@ class Api::BoardsController < ApplicationController
 
   def index
     @boards = Board.all
+    render :index
   end
 
   def destroy
