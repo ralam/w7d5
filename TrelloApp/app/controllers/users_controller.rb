@@ -1,7 +1,10 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
+  def new
+  end
+
   def create
-    user = User.new(user_params)
-    if user.save
+    @user = User.new(user_params)
+    if @user.save
       login!(user)
       render 'root'
     else
