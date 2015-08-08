@@ -23,6 +23,15 @@ class Api::BoardsController < ApplicationController
   def update
   end
 
+  def show
+    @board = Board.find(params[:id])
+    if @board
+      render :show
+    else
+      render json: @board.errors.full_messages, status: 422
+    end
+  end
+
   private
 
   def board_params

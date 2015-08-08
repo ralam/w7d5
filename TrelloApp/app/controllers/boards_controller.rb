@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
   def create
     board = Board.new(board_params)
     if board.save
-      render 'show'
+      render :show
     else
       render json: board.errors.full_messages, status 422
     end
@@ -19,6 +19,8 @@ class BoardsController < ApplicationController
 
   def destroy
   end
+
+
 
   private
 
