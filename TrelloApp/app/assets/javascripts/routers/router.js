@@ -23,8 +23,7 @@ TrelloApp.Routers.Router = Backbone.Router.extend({
 
   showBoard: function (id) {
     var board = this.boards.getOrFetch(id);
-    debugger;
-    var boardView = new TrelloApp.Views.BoardShow({model: board});
+    var boardView = new TrelloApp.Views.BoardShow({model: board, collection: this.boards});
     this.swapView(boardView);
   },
 

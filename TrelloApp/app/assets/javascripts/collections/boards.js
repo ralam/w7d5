@@ -15,7 +15,6 @@ TrelloApp.Collections.Boards = Backbone.Collection.extend({
         error: function () { collection.remove(board); }
       });
     }
-    board.fetch();
     return board;
   }
 });
