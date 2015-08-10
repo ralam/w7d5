@@ -7,24 +7,42 @@ TrelloApp.Routers.Router = Backbone.Router.extend({
   routes:{
     '': 'index',
     'boards/new': 'createBoard',
+    'boards/:id/lists/new': 'createList',
     'boards/:id': 'showBoard'
   },
 
   index: function () {
     this.boards.fetch();
-    var view = new TrelloApp.Views.BoardIndex({collection: this.boards});
+    var view = new TrelloApp.Views.BoardIndex({
+      collection: this.boards
+    });
     this.swapView(view);
   },
 
   createBoard: function () {
-    var view = new TrelloApp.Views.BoardNew({collection: this.boards});
+    var view = new TrelloApp.Views.BoardNew({
+      collection: this.boards
+    });
     this.swapView(view);
   },
 
   showBoard: function (id) {
     var board = this.boards.getOrFetch(id);
-    var boardView = new TrelloApp.Views.BoardShow({model: board, collection: this.boards});
-    this.swapView(boardView);
+    var view = new TrelloApp.Views.BoardShow({
+      model: board,
+      collection: this.boards
+    });
+    this.swapView(view);
+  },
+
+  createList: function (id) {
+    var board = this.boards.getOrFetch(id);
+    var lists = board.lists();
+    var view = new TrelloApp.Views.ListNew({
+      collection: lists,
+      board: board
+    });
+    this.swapView(view);
   },
 
   swapView: function (view) {

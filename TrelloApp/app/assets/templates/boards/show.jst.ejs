@@ -1,4 +1,8 @@
 <p>Board: <%= board.escape('title') %></p>
+
+<a href="<%= '#/boards/' + board.attributes.id + '/lists/new' %>">
+  <p class="add-list">Add a list</p>
+</a>
 <p>Lists:</p>
 <ul class="lists"></ul>
 <a href="/"><p class="index-link">Return to index</p></a>
