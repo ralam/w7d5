@@ -7,7 +7,7 @@ TrelloApp.Routers.Router = Backbone.Router.extend({
   routes:{
     '': 'index',
     'boards/new': 'createBoard',
-    'boards/:id/show': 'showBoard'
+    'boards/:id': 'showBoard'
   },
 
   index: function () {

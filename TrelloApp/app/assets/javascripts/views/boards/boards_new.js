@@ -18,7 +18,8 @@ TrelloApp.Views.BoardNew = Backbone.View.extend({
     model.save(formData.board,{
       success: function (board) {
         this.collection.add(board);
-        Backbone.history.navigate('/', { trigger: true });
+        var boardId = board.attributes.id
+        Backbone.history.navigate('/boards/' + boardId, { trigger: true });
       }.bind(this)
     });
   }
