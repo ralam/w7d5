@@ -8,7 +8,7 @@ TrelloApp.Views.BoardShow = Backbone.CompositeView.extend({
   },
 
   addList: function (list) {
-    var listView = new TrelloApp.Views.List({
+    var listView = new TrelloApp.Views.ListShow({
       model: list
     });
 
@@ -17,9 +17,7 @@ TrelloApp.Views.BoardShow = Backbone.CompositeView.extend({
 
   render: function () {
     this.$el.html(this.template({board: this.model}));
-    this.model.lists().each(function (list) {
-
-    });
+    this.attachSubviews();
     return this;
   }
 

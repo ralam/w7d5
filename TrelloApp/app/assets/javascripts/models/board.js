@@ -12,8 +12,8 @@ TrelloApp.Models.Board = Backbone.Model.extend({
 
   lists: function () {
     if (this._lists === undefined) {
-      this._lists = new TrelloApp.Collections.Lists([], { list: this });
-
+      this._lists = new TrelloApp.Collections.Lists([], { board: this });
+      //FIGURE OUT WHY THIS IS EMPTY
       return this._lists;
     }
   }
