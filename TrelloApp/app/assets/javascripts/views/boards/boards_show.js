@@ -6,7 +6,7 @@ TrelloApp.Views.BoardShow = Backbone.CompositeView.extend({
     this.lists = this.model.lists()
     this.lists.each(this.addList.bind(this));
     this.listenTo(this.collection, "sync", this.render);
-    this.listenTo(this.lists, "sync add", this.addList);
+    this.listenTo(this.lists, "add", this.addList);
   },
 
   addList: function (list) {
