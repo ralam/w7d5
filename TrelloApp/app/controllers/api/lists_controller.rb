@@ -24,7 +24,7 @@ class Api::ListsController < ApplicationController
   def destroy
     @list = List.find(params[:id])
     @list.destroy
-    render :show
+    render json: @list
   end
 
   private

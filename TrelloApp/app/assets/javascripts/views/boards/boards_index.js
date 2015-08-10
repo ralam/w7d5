@@ -4,6 +4,9 @@ TrelloApp.Views.BoardIndex = Backbone.CompositeView.extend({
   initialize: function () {
     this.collection.each(this.addBoard.bind(this));
     this.listenTo(this.collection, "add", this.addBoard);
+    this.listenTo(this.collection, "remove", this.removeBoardView);
+    this.listenTo(this.collection, "sync", this.render);
+    // this.listenTo(this., "sync", this.render);
   },
 
   addBoard: function (board) {
@@ -11,6 +14,10 @@ TrelloApp.Views.BoardIndex = Backbone.CompositeView.extend({
       model: board
     });
     this.addSubview("ul.board", boardView);
+  },
+
+  removeBoardView: function (board) {
+    this.removeModelSubview('ul.board', board);
   },
 
   render: function () {
